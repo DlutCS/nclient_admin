@@ -35,6 +35,7 @@ export default function (app) {
           'footer': {
             template: footerTemplate
           }
+
         }
         
       })

@@ -1,1 +1,48 @@
-这是列表页面
+<div class="list-page">
+  <div class="operation">
+    <dl class="sub-nav">
+      <dt>操作</dt>
+      <dd class="active"><a href="">创建</a></dd>
+      <dd class="active"><a href="">修改选中</a></dd>
+      <dd class="active"><a href="">删除选中</a></dd>
+    </dl>
+  </div>
+  <div class="data-table">
+  <table>
+    <thead>
+      <tr>
+        <th width="5">X</th>
+        <th width="5">ID</th>
+        <th>标题</th>
+        <th width="75">作者</th>
+        <th width="100">创建日期</th>
+        <th width="75">阅读量</th>
+        <th width="100">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="data-item" ng-repeat="r in config.records">
+        <td><input type="checkbox" name="select[]" ng-model="r.select"/></td>
+        <td>{{r.id}}</td>
+        <td>{{r.title}}</td>
+        <td>{{r.author_id}}</td>
+        <td>{{r.create_time}}</td>
+        <td>{{r.read_count}}</td>
+        <td>op1</td>
+      </tr>
+
+    </tbody>
+  </table>
+  <ul class="pagination">
+    <li class="arrow unavailable"><a href="">&laquo;</a></li>
+    <li class="current"><a href="">1</a></li>
+    <li><a href="">2</a></li>
+    <li><a href="">3</a></li>
+    <li><a href="">4</a></li>
+    <li class="unavailable"><a href="">&hellip;</a></li>
+    <li><a href="">12</a></li>
+    <li><a href="">13</a></li>
+    <li class="arrow"><a href="">&raquo;</a></li>
+  </ul>
+  </div>
+</div>

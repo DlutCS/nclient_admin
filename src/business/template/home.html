@@ -11,27 +11,34 @@
       <section class="top-bar-section">
 
         <!-- Left Nav Section -->
-        <ul class="left">
-          <li><a href="" ui-sref=".user" >用户</a></li>
-          <li><a href="" ui-sref=".category" >类目</a></li>
-          <li><a href="" ui-sref=".news" >新闻</a></li>
+        <ul class="left" >
+          <!-- directive:ng-repeat-start  -->
+          <li  ng-repeat="nav in config.header" ng-class="{'active':config.route[1]==nav.route}">
+            <a href="" ui-sref=".{{nav.route}}" >{{nav.name}}</a>
+          </li>
+          <!-- directive: ng-repeat-end -->
         </ul>
       </section>
     </nav>
-
+      <ul class="breadcrumbs">
+        <!--这里需要加一个 英文转中文的filter-->
+        <li ng-repeat="path in config.route ">
+          {{ path }}
+        </li>
+      </ul>
   </div>
 
 
 
   <div class="content-wrap">
-
+    
     <div class="row full-height clearfix">
 
-      <div class="small-3 medium-2 large-2 columns">
-        <div data-ui-view="left"></div>
+      <div class="small-3 medium-2 large-2 columns left-menu">
+        <div data-ui-view="left" class=""></div>
       </div>
-      <div class="small-9 medium-10 large-10 columns">
-        <div data-ui-view="right"></div>
+      <div class="small-9 medium-10 large-10 columns right-detail">
+        <div data-ui-view="right" class=""></div>
       </div>
 
     </div>
