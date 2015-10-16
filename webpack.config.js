@@ -16,6 +16,7 @@ module.exports = {
       'angular-ui-router': srcBase + '/lib/angular/angular-ui-router.js',
       'template': srcBase + '/business/template/',
       'controller': srcBase + '/business/controller/',
+      'service': srcBase + '/business/service/',
       'state': srcBase + '/business/state/',
       'directive': srcBase + '/business/directive/',
       'app': srcBase + '/business/app/',

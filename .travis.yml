@@ -1,0 +1,46 @@
+language: node_js
+node_js:
+  - "0.12.7"
+
+before_install:
+ - export GITBASE=$(pwd)
+ - echo "before_install"
+ - echo $SSHPRIVATE | base64 -d >> ~/.ssh/id_rsa
+ - chmod 400 ~/.ssh/id_rsa
+ - chmod +x ./scripts/*
+
+install:
+ - echo 'install'
+ - npm install
+
+script: 
+ - echo 'script'
+ # npm
+ - npm run build
+ - echo 'script done'
+
+
+ - echo 'clean'
+
+
+branches:
+  only:
+    - master
+    - prelease
+
+deploy:
+  - provider: script
+    script: scripts/deploy_production.sh
+    on:
+      branch: "master"
+  - provider: script
+    script: scripts/deploy_prelease.sh
+    on:
+      branch: "prelease"
+
+# slack的travis通知
+notifications:
+  slack:
+    rooms:
+      - dlutcs:FqRyN5OsfreuUzBJXjZcWlG3#travis-ci
+

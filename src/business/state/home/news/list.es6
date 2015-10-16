@@ -15,7 +15,7 @@ export default function (app) {
       
       $stateProvider
       .state('home.news.list', {
-        url: 'list/',
+        url: 'list/:pageCnt',
         views: {
           
           'right@home': {
