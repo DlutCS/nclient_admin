@@ -15,7 +15,7 @@ export default function (app) {
               loaded: false,
               pageCnt: $state.params.pageCnt || 1,
               pageLimit: 10,
-              pageTotal: null
+              pageTotal: 1
             }
             var model = dataProvider({
               model: 'news',
@@ -45,7 +45,7 @@ export default function (app) {
                 console.log($event)
               },
               retrievePage: function(pageCnt) {
-                
+                if (pageCnt < 1 || pageCnt > $scope.config.pageTotal ) return;
                 $scope.config.loaded = false;
                 model.retrieve({
                   start: (pageCnt - 1)* $scope.config.pageLimit, 
