@@ -19,6 +19,11 @@
     font-weight: bold;
     font-size: 1.125rem;
   }
+  .nofloatblock li {
+    &::after, &:after {
+      display: none!important;
+    }
+  }
   .top-bar .top-bar-section li {
     position: relative;
     display: block;
@@ -65,14 +70,20 @@
   position: relative;
   height: 100%;
   padding-top:75px;
-  .full-height {
-    position: relative;
-    height: 100%;
-  }
+
   .columns {
     //box-shadow: 0 0 1px #000;
     height: 100%;
     overflow-y: auto;
+
+  }
+  .full-height {
+    position: relative;
+    height: 100%;
+@media (min-width: 1250px)  {
+  max-width: 80%!important;
+}
+
 
   }
 }

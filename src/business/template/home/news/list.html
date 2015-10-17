@@ -35,18 +35,7 @@
   <div ng-if="!config.loaded">
     加载中，请稍候
   </div>
-  <ul class="pagination" ng-if="config.loaded">
-    <li class="arrow " ng-class="{'unavailable': config.pageCnt == 1}" ng-click="func.retrievePage(config.pageCnt-1)"><a href="">&laquo;</a></li>
-    <li class="" ng-if="config.pageCnt - 0 > 1"><a href="" ng-click="func.retrievePage(1)">1</a></li>
-    <li class="unavailable" ng-if="config.pageCnt >= 5" ><a href="">...</a></li>
-    <li class="" ng-if="config.pageCnt - 0 > 3"><a href="" ng-click="func.retrievePage(config.pageCnt-2)">{{config.pageCnt-2}}</a></li>
-    <li class="" ng-if="config.pageCnt - 0 > 2"><a href="" ng-click="func.retrievePage(config.pageCnt-1)">{{config.pageCnt-1}}</a></li>
-    <li class="current"><a href="">{{config.pageCnt}}</a></li>
-    <li class="" ng-if="config.pageCnt - config.pageTotal < -1"><a href="" ng-click="func.retrievePage(config.pageCnt+1)">{{config.pageCnt+1}}</a></li>
-    <li class="" ng-if="config.pageCnt - config.pageTotal < -2"><a href="" ng-click="func.retrievePage(config.pageCnt+2)">{{config.pageCnt+2}}</a></li>
-    <li class="unavailable"  ng-if="config.pageCnt - config.pageTotal <= -4"><a href="">...</a></li>
-    <li class="" ng-if="config.pageCnt - config.pageTotal < 0"><a href=""  ng-click="func.retrievePage(config.pageTotal)">{{config.pageTotal}}</a></li>
-    <li class="arrow" ng-class="{'unavailable': config.pageCnt == config.pageTotal}" ng-click="func.retrievePage(config.pageCnt+1)"><a href="">&raquo;</a></li>
-  </ul>
+  <admin-pagination loaded="config.loaded" page-cnt="config.pageCnt" page-total="config.pageTotal" retrieve-func="func.retrievePage"></admin-pagination>
+
   </div>
 </div>
