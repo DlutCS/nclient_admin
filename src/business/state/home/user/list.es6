@@ -5,7 +5,7 @@ import userListTemplate from 'template/home/user/list.html'
 
 //import children state and initialize
 
-export default function (app) {
+module.exports = function (app) {
   userListCtrl(app)
 
   app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$interpolateProvider',

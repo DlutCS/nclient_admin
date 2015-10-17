@@ -11,7 +11,7 @@ import newsState from 'state/home/news.es6'
 
 import 'style/home.scss'
 
-export default function (app) {
+module.exports = function (app) {
   homeCtrl(app)
 
   userState(app)

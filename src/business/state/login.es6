@@ -5,7 +5,7 @@ import loginTemplate from 'template/login.html'
 import footerTemplate from 'template/footer.html'
 //import children state and initialize
 
-export default function (app) {
+module.exports = function (app) {
   loginCtrl(app)
 
   app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$interpolateProvider',

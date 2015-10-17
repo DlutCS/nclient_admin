@@ -17,7 +17,7 @@ import 'angular'
 
 'use strict';
 
-export default function(app) {
+module.exports = function(app) {
   app.factory('login', ['$window', '$q', '$state','$location',
     function($window, $q, $state, $location) {
 

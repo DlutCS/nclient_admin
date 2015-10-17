@@ -3,7 +3,7 @@ import 'angular'
 
 'use strict';
 
-export default function (app) {
+module.exports = function (app) {
 
     app.controller('userEditCtrl', ['$rootScope', '$scope', '$window', '$document', '$timeout', '$state', '$q',
         function ($rootScope, $scope, $window, $document, $timeout, $state, $q) {

@@ -8,7 +8,7 @@ import newsListState from 'state/home/news/list.es6'
 import newsCreateState from 'state/home/news/create.es6'
 //import children state and initialize
 
-export default function (app) {
+module.exports = function (app) {
   newsLeftCtrl(app)
   
   newsEditState(app)

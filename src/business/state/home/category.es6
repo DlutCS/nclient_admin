@@ -8,7 +8,7 @@ import categoryListState from 'state/home/category/list.es6'
 import categoryCreateState from 'state/home/category/create.es6'
 //import children state and initialize
 
-export default function (app) {
+module.exports = function (app) {
   categoryLeftCtrl(app)
   
   categoryEditState(app)

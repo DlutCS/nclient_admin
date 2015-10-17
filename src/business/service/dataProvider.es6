@@ -3,7 +3,7 @@ import 'angular'
 
 'use strict';
 
-export default function(app) {
+module.exports = function(app) {
   //CRUD Provider
   app.factory('dataProvider', [ '$q', '$http',
     function($q, $http) {

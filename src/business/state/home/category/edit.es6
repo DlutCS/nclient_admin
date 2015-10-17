@@ -5,7 +5,7 @@ import categoryEditTemplate from 'template/home/category/edit.html'
 
 //import children state and initialize
 
-export default function (app) {
+module.exports = function (app) {
   categoryEditCtrl(app)
 
   app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$interpolateProvider',

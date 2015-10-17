@@ -3,7 +3,7 @@ import 'style/home/list.scss'
 
 'use strict';
 
-export default function (app) {
+module.exports = function (app) {
 
  
     app.controller('newsListCtrl', ['$rootScope', '$scope', '$window', '$document', '$timeout', '$state', '$q', 'dataProvider',

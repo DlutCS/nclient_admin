@@ -5,7 +5,7 @@ import userEditTemplate from 'template/home/user/edit.html'
 
 //import children state and initialize
 
-export default function (app) {
+module.exports = function (app) {
   userEditCtrl(app)
 
   app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$interpolateProvider',
