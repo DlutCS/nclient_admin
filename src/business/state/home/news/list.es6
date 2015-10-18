@@ -5,7 +5,7 @@ import newsListTemplate from 'template/home/news/list.html'
 
 //import children state and initialize
 
-export default function (app) {
+module.exports = function (app) {
   newsListCtrl(app)
 
   app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$interpolateProvider',
@@ -15,7 +15,7 @@ export default function (app) {
       
       $stateProvider
       .state('home.news.list', {
-        url: 'list/:pageCnt',
+        url: 'list/',
         views: {
           
           'right@home': {

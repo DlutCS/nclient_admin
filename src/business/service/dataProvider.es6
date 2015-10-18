@@ -3,7 +3,7 @@ import 'angular'
 
 'use strict';
 
-export default function(app) {
+module.exports = function(app) {
   //CRUD Provider
   app.factory('dataProvider', [ '$q', '$http',
     function($q, $http) {
@@ -15,6 +15,7 @@ export default function(app) {
         var model = _option.model;
         var data = cache[model] || ( cache[model] = {} );
         var baseUrl = _option.baseUrl.replace(/\/$/,'')+'/' + model + '/';
+
         function createMethod(data) {
           return $http.post(
             baseUrl + 'create',
@@ -35,13 +36,41 @@ export default function(app) {
         }
 
         function deleteMethod(data) {
+          console.log( dataEncode(data) )
           return $http({
             method: 'post',
             url:  baseUrl + 'delete/',
-            data: 'id=1&id=2',
+            data: dataEncode(data),
             headers:{'Content-Type': 'application/x-www-form-urlencoded'}
            
           })
+        }
+
+        function dataEncode(data) {
+          var ret = [];
+          var value;
+
+          var keyEncoded;
+          for(var key in data) {
+            value = data[key];
+            keyEncoded = encodeURIComponent( key );
+            if ( data.hasOwnProperty(key) ) {
+              if ( angular.isArray( value ) ) {
+                value.forEach(function(v) {
+                  ret.push( keyEncoded + '=' + encodeURIComponent( v ) );
+                })
+              }
+              else if ( angular.isObject( value ) ) {
+                ret.push( keyEncoded + '=' + JSON && JSON.stringify( value ) );
+              }
+              else
+                ret.push( keyEncoded + '=' + encodeURIComponent( value ) )
+              
+            }
+
+          }
+
+          return ret.join('&')
         }
 
         return {

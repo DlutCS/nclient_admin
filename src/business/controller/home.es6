@@ -3,7 +3,7 @@ import 'angular'
 
 'use strict';
 
-export default function (app) {
+module.exports = function (app) {
 
     app.controller('homeCtrl', ['$rootScope', '$scope', '$window', '$document', '$timeout', '$state', '$q', 
         function ($rootScope, $scope, $window, $document, $timeout, $state, $q) {
@@ -14,6 +14,7 @@ export default function (app) {
             console.log('用一个service进行login校验，不行跳到 login')
             
             $scope.config = {
+              showModal: false,
               showHeader: false,
               route: $state.current.name.split('.'),
               routeParam: $state.params,
@@ -37,6 +38,17 @@ export default function (app) {
               $scope.config.routeParam = top
             })
 
+            $scope.$on('homeListModalShow', function(e) {
+              console.log('modal show')
+              $scope.config.showModal = true;
+              e.preventDefault()
+
+            })
+            $scope.$on('homeListModalHide', function(e) {
+              console.log('modal hide')
+              $scope.config.showModal = false;
+              e.preventDefault()
+            })
         }
     ]);
 };

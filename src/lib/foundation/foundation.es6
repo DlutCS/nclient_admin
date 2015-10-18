@@ -1,3 +1,3 @@
 import 'style/foundation.scss';
 
-export default {}
+module.exports = {}

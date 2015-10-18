@@ -5,7 +5,7 @@ import categoryListTemplate from 'template/home/category/list.html'
 
 //import children state and initialize
 
-export default function (app) {
+module.exports = function (app) {
   categoryListCtrl(app)
 
   app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$interpolateProvider',

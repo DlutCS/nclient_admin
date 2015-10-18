@@ -3,7 +3,7 @@ import 'style/home/list.scss'
 
 'use strict';
 
-export default function (app) {
+module.exports = function (app) {
 
  
     app.controller('newsListCtrl', ['$rootScope', '$scope', '$window', '$document', '$timeout', '$state', '$q', 'dataProvider',
@@ -14,7 +14,7 @@ export default function (app) {
               total: null,
               loaded: false,
               pageCnt: $state.params.pageCnt || 1,
-              pageLimit: 10,
+              pageLimit: 20,
               pageTotal: 1
             }
             var model = dataProvider({
@@ -23,7 +23,7 @@ export default function (app) {
             });
 
             //model.retrieve({id: 1})
-
+            $scope.$emit('homeListModalHide');
             
 
             model['delete']({
@@ -45,6 +45,7 @@ export default function (app) {
                 console.log($event)
               },
               retrievePage: function(pageCnt) {
+                console.log('retrieve')
                 if (pageCnt < 1 || pageCnt > $scope.config.pageTotal ) return;
                 $scope.config.loaded = false;
                 model.retrieve({

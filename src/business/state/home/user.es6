@@ -8,7 +8,7 @@ import userListState from 'state/home/user/list.es6'
 import userCreateState from 'state/home/user/create.es6'
 //import children state and initialize
 
-export default function (app) {
+module.exports = function (app) {
   userLeftCtrl(app)
   
   userEditState(app)

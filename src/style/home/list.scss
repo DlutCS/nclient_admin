@@ -24,7 +24,10 @@
       border-bottom: 1px solid #EEE;
     }
     .pagination {
-      
+      li a, li button {
+        border-radius: 0px;
+        padding: 0px 5px;
+      }
     }
   }
 }

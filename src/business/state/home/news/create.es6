@@ -5,7 +5,7 @@ import newsEditTemplate from 'template/home/news/edit.html'
 
 //import children state and initialize
 
-export default function (app) {
+module.exports = function (app) {
   newsEditCtrl(app)
 
   app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$interpolateProvider',
@@ -23,7 +23,6 @@ export default function (app) {
             template: newsEditTemplate
           }
         }
-        
       })
       
     }

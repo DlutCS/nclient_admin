@@ -21,4 +21,4 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$inter
   }
 ]);
 
-export default app;
+module.exports = app;
