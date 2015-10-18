@@ -1,5 +1,60 @@
-<div style="background-color:#FFF;width:100%;height:100%;">
+<div style="background-color:#FFF;width:100%;border: 1px solid #CCC;">
 
-{{config.mode}}
+{{config.mode =='edit' ? '编辑页面' : '创建页面'}}
+{{config.loaded ? '加载完成':'加载中请稍候'}}
+<form class="small-8 small-offset-2 medium-6 medium-offset-3">
+  <div class="row">
+    <div class="columns">
+      <label>标题
+        <input type="text" placeholder="请输入标题" ng-model="config.data.title"/>
+      </label>
+    </div>
+    <!--
+    <div class="small-1 columns">
+      <label for="title" class="right">标题</label>
+    </div>
+    <div class="small-11 columns">
+      <input name="title" type="text" placeholder="请输入标题" ng-model="config.data.title"/>
+    </div>
+
+    -->
+  </div>
+  <div class="row">
+    <div class="small-6 columns">
+      <label>作者
+        <input type="text" placeholder="请输入作者" ng-model="config.data.author"/>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-6 columns">
+      <label>栏目
+        <select>
+
+          <option ng-repeat="cate in config.category" value="{{cate.id}}">{{cate.name}}</option>
+        </select>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-7 columns">
+      <label>封面图
+        <input type="text" placeholder="请输入地址" ng-model="config.data.cover_url"/>
+      </label>
+    </div>
+    <div class="small-5 columns">
+      <div style="width: 100%;height: 100px;background-color:#CCC; background-size: contain" ng-style="{'background-image': 'url('+ config.data.cover_url +')'}">
+        
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <label>文章内容
+        <textarea placeholder="请键入文章内容" ng-model="config.data.content" rows="10"></textarea>
+      </label>
+    </div>
+  </div>
+</form>
 
 </div>

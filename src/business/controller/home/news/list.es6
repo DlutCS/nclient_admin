@@ -14,7 +14,7 @@ module.exports = function (app) {
               total: null,
               loaded: false,
               pageCnt: $state.params.pageCnt || 1,
-              pageLimit: 10,
+              pageLimit: 20,
               pageTotal: 1
             }
             var model = dataProvider({
