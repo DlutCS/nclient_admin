@@ -23,7 +23,6 @@ module.exports = function (app) {
             template: newsEditTemplate
           }
         }
-        
       })
       
     }

@@ -2,7 +2,7 @@
   <div class="operation">
     <dl class="sub-nav">
       <dt>操作</dt>
-      <dd class="active"><a href="javascript:void(0);">创建</a></dd>
+      <dd class="active"><a href="javascript:void(0);" ui-sref="home.news.create">创建</a></dd>
       <dd class="active"><a href="javascript:void(0);" ng-click="func.deleteAll(event)">删除选中</a></dd>
     </dl>
   </div>
@@ -27,7 +27,7 @@
         <td>{{r.author_id}}</td>
         <td>{{r.create_time}}</td>
         <td>{{r.read_count}}</td>
-        <td><a>预览</a><a>修改</a><a ng-click="func.deleteOne($event)">删除</a></td>
+        <td><a ui-sref=".edit({id: r.id})">修改</a><a ng-click="func.deleteOne(r.id)">删除</a></td>
       </tr>
 
     </tbody>

@@ -34,8 +34,10 @@ module.exports = function (app) {
           },
           'footer': {
             template: footerTemplate
+          },
+          'modal': {
+            
           }
-
         }
         
       })

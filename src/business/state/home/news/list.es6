@@ -15,7 +15,7 @@ module.exports = function (app) {
       
       $stateProvider
       .state('home.news.list', {
-        url: 'list/:pageCnt',
+        url: 'list/',
         views: {
           
           'right@home': {

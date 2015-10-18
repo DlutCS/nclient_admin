@@ -13,7 +13,7 @@ module.exports = function(app) {
         scope: {
           loaded: "=loaded",
           pageCnt: "=pageCnt",
-          retrieveFunc: "&retrieveFunc",
+          retrieveFunc: "=retrieveFunc",
           pageTotal: "=pageTotal"
         },
         template: 

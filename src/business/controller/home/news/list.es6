@@ -23,7 +23,7 @@ module.exports = function (app) {
             });
 
             //model.retrieve({id: 1})
-
+            $scope.$emit('homeListModalHide');
             
 
             model['delete']({
@@ -45,6 +45,7 @@ module.exports = function (app) {
                 console.log($event)
               },
               retrievePage: function(pageCnt) {
+                console.log('retrieve')
                 if (pageCnt < 1 || pageCnt > $scope.config.pageTotal ) return;
                 $scope.config.loaded = false;
                 model.retrieve({
