@@ -1,5 +1,5 @@
 import 'angular'
-
+import {editor} from 'lib/ueditor/ueditor.es6'
 
 'use strict';
 
@@ -7,20 +7,8 @@ module.exports = function (app) {
 
     app.controller('newsEditCtrl', ['$rootScope', '$scope', '$window', '$document', '$timeout', '$state', '$q', 'dataProvider',
         function ($rootScope, $scope, $window, $document, $timeout, $state, $q, dataProvider) {
-            
-            var stateNames = $state.current.name.split('.');
-            var mode = stateNames[ stateNames.length-1 ];
-            $scope.config = {
-              mode: mode,
-              id: null,
-              showModal: false,
-              data: null,
-              loaded: false,
-              category: null
-            }
-            
             console.log('News Edit 控制器', mode);
-
+            
             var modelNews = dataProvider({
               model: 'news',
               baseUrl: '/api/admin/'
@@ -30,7 +18,32 @@ module.exports = function (app) {
               baseUrl: '/api/admin/'
             });
 
+            
+            var stateNames = $state.current.name.split('.');
+            var mode = stateNames[ stateNames.length-1 ];
+            $scope.config = {
+              mode: mode,
+              id: null,
+              showModal: false,
+              data: null,
+              loaded: false,
+              category: null,
+              editor: editor.getEditor('editor')
+            }
+            
 
+            $scope.func = {
+              submitForm: function (e) {
+                var cfg = $scope.config;
+                cfg.data = cfg.editor.getContent()
+              
+                modelNews.update(cfg.data)
+              }
+            }
+            
+
+
+            
             if (mode != 'create') {
               // edit mode
               var id = $scope.config.id = $state.params.id
@@ -53,6 +66,10 @@ module.exports = function (app) {
 
                 $scope.config.category = dataCategory.data
                 console.log(dataCategory)
+
+                $scope.config.editor.ready(function(){
+                  $scope.config.editor.setContent( $scope.config.data.content )
+                })
               })
              
               $scope.$emit('homeListModalShow');
@@ -63,6 +80,10 @@ module.exports = function (app) {
               $scope.$emit('homeListModalHide');
             }
 
+
+            function autoWatchTextare() {
+
+            }
         }
     ]);
 };

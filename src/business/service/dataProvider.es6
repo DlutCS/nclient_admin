@@ -32,7 +32,14 @@ module.exports = function(app) {
         }
       
         function updateMethod() {
-
+          console.log( dataEncode(data) )
+          return $http({
+            method: 'post',
+            url:  baseUrl + 'update/',
+            data: dataEncode(data),
+            headers:{'Content-Type': 'application/x-www-form-urlencoded'}
+           
+          })
         }
 
         function deleteMethod(data) {
