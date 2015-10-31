@@ -20,13 +20,15 @@ module.exports = {
       'state': srcBase + '/business/state/',
       'directive': srcBase + '/business/directive/',
       'app': srcBase + '/business/app/',
-      'style': srcBase + '/style/'
+      'style': srcBase + '/style/',
+      'lib': srcBase + '/lib/'
     }
   },
   entry: {
       'hot': ['webpack/hot/dev-server','webpack-dev-server/client?http://localhost:9090'],
       'admin': srcBase + '/business/admin.es6',
-      'foundation': srcBase + '/lib/foundation/foundation.es6'
+      'foundation': srcBase + '/lib/foundation/foundation.es6',
+      'ueditor': srcBase + '/lib/ueditor/ueditor.es6'
     },
     plugins: [
       new ExtractTextPlugin("[name].css")
@@ -61,7 +63,7 @@ module.exports = {
       loader: 'html-loader'
     },
     {
-      test: /\.(png|jpg)$/, 
+      test: /\.(png|jpg|gif)$/, 
       loader: 'url-loader?limit=16384'
     }]
   },
