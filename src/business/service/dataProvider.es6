@@ -31,7 +31,7 @@ module.exports = function(app) {
           })
         }
       
-        function updateMethod() {
+        function updateMethod(data) {
           console.log( dataEncode(data) )
           return $http({
             method: 'post',

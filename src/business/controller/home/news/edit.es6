@@ -35,9 +35,17 @@ module.exports = function (app) {
             $scope.func = {
               submitForm: function (e) {
                 var cfg = $scope.config;
-                cfg.data = cfg.editor.getContent()
+                cfg.data = cfg.data || {};
+                cfg.data.content = cfg.editor.getContent()
               
+                console.dir(cfg.data)
                 modelNews.update(cfg.data)
+                .then(function() {
+                  alert('更新成功')
+                }, function() {
+                  alert('更新错误')
+                })
+                
               }
             }
             
