@@ -17,10 +17,13 @@ module.exports = function(app) {
         var baseUrl = _option.baseUrl.replace(/\/$/,'')+'/' + model + '/';
 
         function createMethod(data) {
-          return $http.post(
-            baseUrl + 'create',
-            data
-            )
+          return $http({
+            method: 'post',
+            url:  baseUrl + 'create/',
+            data: dataEncode(data),
+            headers:{'Content-Type': 'application/x-www-form-urlencoded'}
+           
+          })
         }
         
         function retrieveMethod(data) {
