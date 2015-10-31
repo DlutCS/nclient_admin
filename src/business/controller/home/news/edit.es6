@@ -37,13 +37,18 @@ module.exports = function (app) {
                 var cfg = $scope.config;
                 cfg.data = cfg.data || {};
                 cfg.data.content = cfg.editor.getContent()
-              
-                console.dir(cfg.data)
+                cfg.loaded = false;
+                cfg.editor.setDisabled()
+                
                 modelNews.update(cfg.data)
                 .then(function() {
                   alert('更新成功')
+                  cfg.editor.setEnabled()
+                  cfg.loaded = true;
                 }, function() {
                   alert('更新错误')
+                  cfg.editor.setEnabled()
+                  cfg.loaded = true;
                 })
                 
               }
@@ -54,7 +59,11 @@ module.exports = function (app) {
             
             if (mode != 'create') {
               // edit mode
-              var id = $scope.config.id = $state.params.id
+              var cfg = $scope.config;
+              cfg.editor.ready(function(){
+                cfg.editor.setDisabled();
+              });
+              var id = cfg.id = $state.params.id
               if ( !id ) {
                 $state.go('home.news.list')
               }
@@ -68,15 +77,16 @@ module.exports = function (app) {
                 var dataNews = data[0].data
                 var dataCategory = data[1].data
 
-                $scope.config.loaded = true
+                cfg.loaded = true
                 console.log(dataNews)
-                $scope.config.data = dataNews
+                cfg.data = dataNews
 
-                $scope.config.category = dataCategory.data
+                cfg.category = dataCategory.data
                 console.log(dataCategory)
 
-                $scope.config.editor.ready(function(){
-                  $scope.config.editor.setContent( $scope.config.data.content )
+                cfg.editor.ready(function(){
+                  cfg.editor.setEnabled();
+                  cfg.editor.setContent( cfg.data.content )
                 })
               })
              

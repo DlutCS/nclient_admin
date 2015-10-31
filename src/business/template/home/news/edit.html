@@ -6,7 +6,7 @@
   <div class="row">
     <div class="columns">
       <label>标题
-        <input type="text" placeholder="请输入标题" ng-model="config.data.title"/>
+        <input type="text" ng-model="config.data.title" placeholder="{{config.loaded?'请输入标题':'Loading...'}}" ng-disabled="!config.loaded"/>
       </label>
     </div>
     <!--
@@ -22,14 +22,14 @@
   <div class="row">
     <div class="small-6 columns">
       <label>作者
-        <input type="text" placeholder="请输入作者" ng-model="config.data.author"/>
+        <input type="text" ng-model="config.data.author" placeholder="{{config.loaded?'请输入作者':'Loading...'}}" ng-disabled="!config.loaded"/>
       </label>
     </div>
   </div>
   <div class="row">
     <div class="small-6 columns">
       <label>栏目
-        <select ng-model="config.data.category_id">
+        <select ng-model="config.data.category_id" ng-disabled="!config.loaded">
 
           <option ng-repeat="cate in config.category" value="{{cate.id}}" ng-selected="{{ cate.id == config.data.category_id }}">{{cate.name}}</option>
         </select>
@@ -39,7 +39,7 @@
   <div class="row">
     <div class="small-7 columns">
       <label>封面图
-        <input type="text" placeholder="请输入地址" ng-model="config.data.cover_url"/>
+        <input type="text" ng-model="config.data.cover_url" placeholder="{{config.loaded?'请输入地址':'Loading...'}}" ng-disabled="!config.loaded"/>
       </label>
     </div>
     <div class="small-5 columns">
@@ -59,3 +59,4 @@
 </form>
 
 </div>
+

@@ -32,7 +32,7 @@ module.exports = function(app) {
         }
       
         function updateMethod(data) {
-          console.log( dataEncode(data) )
+          //console.log( dataEncode(data) )
           return $http({
             method: 'post',
             url:  baseUrl + 'update/',
@@ -43,7 +43,7 @@ module.exports = function(app) {
         }
 
         function deleteMethod(data) {
-          console.log( dataEncode(data) )
+          //console.log( dataEncode(data) )
           return $http({
             method: 'post',
             url:  baseUrl + 'delete/',
