@@ -1,5 +1,5 @@
 import 'angular'
-import {editor} from 'lib/ueditor/ueditor.es6'
+import {editor} from 'ueditor'
 
 'use strict';
 
