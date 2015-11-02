@@ -24,12 +24,12 @@ module.exports = function (app) {
             template: newsEditTemplate
           }
         },
-        onEnter: function($rootScope) {
+        onEnter: ['$rootScope', function($rootScope) {
           $rootScope.$broadcast('homeListModalShow')
-        },
-        onExit: function($rootScope) {
+        }],
+        onExit: ['$rootScope', function($rootScope) {
           $rootScope.$broadcast('homeListModalHide')
-        }
+        }]
       })
       .state('home.news.create', {
         url: 'create/',
@@ -40,12 +40,12 @@ module.exports = function (app) {
             template: newsEditTemplate
           }
         },
-        onEnter: function($rootScope) {
+        onEnter: ['$rootScope', function($rootScope) {
           $rootScope.$broadcast('homeListModalHide')
-        },
-        onExit: function($rootScope) {
+        }],
+        onExit: ['$rootScope', function($rootScope) {
           //$rootScope.broadcast('homeListModalShow')
-        }
+        }]
         
       })
       
