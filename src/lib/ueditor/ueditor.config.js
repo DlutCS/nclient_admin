@@ -30,7 +30,7 @@
         UEDITOR_HOME_URL: URL
 
         // 服务器统一请求接口路径
-        , serverUrl: URL + "php/controller.php"
+        , serverUrl: ''//URL + "php/controller.php"
 
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的从新定义
         , toolbars: [[
@@ -51,16 +51,16 @@
         //,labelMap:{
         //    'anchor':'', 'undo':''
         //}
-
+        ,ZeroClipboardPath: 'x'
         //语言配置项,默认是zh-cn。有需要的话也可以使用如下这样的方式来自动多语言切换，当然，前提条件是lang文件夹下存在对应的语言文件：
         //lang值也可以通过自动获取 (navigator.language||navigator.browserLanguage ||navigator.userLanguage).toLowerCase()
         //,lang:"zh-cn"
-        //,langPath:URL +"lang/"
+        ,langPath: ''//URL +"lang/"
 
         //主题配置项,默认是default。有需要的话也可以使用如下这样的方式来自动多主题切换，当然，前提条件是themes文件夹下存在对应的主题文件：
         //现有如下皮肤:default
         //,theme:'default'
-        //,themePath:URL +"themes/"
+        ,themePath: ''//URL +"themes/"
 
         //,zIndex : 900     //编辑器层级的基数,默认是900
 
@@ -106,7 +106,7 @@
 
         //,imagePopup:true      //图片操作的浮层开关，默认打开
 
-        ,autoSyncData:false //自动同步编辑器要提交的数据
+        ,autoSyncData: true //自动同步编辑器要提交的数据
         //,emotionLocalization:false //是否开启表情本地化，默认关闭。若要开启请确保emotion文件夹下包含官网提供的images表情文件夹
 
         //粘贴只保留标签，去除标签所有属性
@@ -327,12 +327,12 @@
         //sourceEditor
         //源码的查看方式,codemirror 是代码高亮，textarea是文本框,默认是codemirror
         //注意默认codemirror只能在ie8+和非ie中使用
-        //,sourceEditor:"codemirror"
+        ,sourceEditor: 'x'//"codemirror"
         //如果sourceEditor是codemirror，还用配置一下两个参数
         //codeMirrorJsUrl js加载的路径，默认是 URL + "third-party/codemirror/codemirror.js"
-        //,codeMirrorJsUrl:URL + "third-party/codemirror/codemirror.js"
+        ,codeMirrorJsUrl: ''//URL + "third-party/codemirror/codemirror.js"
         //codeMirrorCssUrl css加载的路径，默认是 URL + "third-party/codemirror/codemirror.css"
-        //,codeMirrorCssUrl:URL + "third-party/codemirror/codemirror.css"
+        ,codeMirrorCssUrl: ''//URL + "third-party/codemirror/codemirror.css"
         //编辑器初始化完成后是否进入源码模式，默认为否。
         //,sourceEditorFirst:false
 
