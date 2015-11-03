@@ -28,6 +28,9 @@ module.exports = function (app) {
               },{
                 'route':'news', 
                 'name':'新闻'
+              },{
+                'route':'control',
+                'name':'管理'
               }]
             }
            
