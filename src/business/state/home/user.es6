@@ -5,7 +5,6 @@ import userLeftTemplate from 'template/home/user/left.html'
 
 import userEditState from 'state/home/user/edit.es6'
 import userListState from 'state/home/user/list.es6'
-import userCreateState from 'state/home/user/create.es6'
 //import children state and initialize
 
 module.exports = function (app) {
@@ -13,7 +12,7 @@ module.exports = function (app) {
   
   userEditState(app)
   userListState(app)
-  userCreateState(app)
+
 
   app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$interpolateProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider, $interpolateProvider) {

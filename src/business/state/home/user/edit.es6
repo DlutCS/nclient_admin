@@ -3,6 +3,7 @@ import 'angular'
 import userEditCtrl from 'controller/home/user/edit.es6'
 import userEditTemplate from 'template/home/user/edit.html'
 
+import 'style/home/edit.scss'
 //import children state and initialize
 
 module.exports = function (app) {
@@ -14,18 +15,39 @@ module.exports = function (app) {
       //$interpolateProvider.startSymbol('{[{').endSymbol('}]}');
       
       $stateProvider
-      .state('home.user.edit', {
-        url: 'edit/',
+      .state('home.user.list.edit', {
+        url: 'edit/:id',
+        views: {
+          
+          'modal@home': {
+            controller: 'userEditCtrl',
+            template: userEditTemplate
+          }
+        },
+        onEnter: ['$rootScope', function($rootScope) {
+          $rootScope.$broadcast('homeListModalShow')
+        }],
+        onExit: ['$rootScope', function($rootScope) {
+          $rootScope.$broadcast('homeListModalHide')
+        }]
+      })
+      .state('home.user.create', {
+        url: 'create/',
         views: {
           
           'right@home': {
             controller: 'userEditCtrl',
             template: userEditTemplate
           }
-        }
+        },
+        onEnter: ['$rootScope', function($rootScope) {
+          $rootScope.$broadcast('homeListModalHide')
+        }],
+        onExit: ['$rootScope', function($rootScope) {
+          //$rootScope.broadcast('homeListModalShow')
+        }]
         
       })
-      
     }
   ]);
 }
