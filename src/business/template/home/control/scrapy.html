@@ -1,8 +1,36 @@
 爬虫首页
-<a href="#" class="button tiny">数据随机化</a>
+<a href="javascript:void(0);" class="button tiny" ng-click="func.random()">数据随机化</a>
 
 <ul>
-  <li ng-repeat="spider in config.spiders" >
-  {{spider}}
+  <li ng-repeat="project in config.projects" >
+  <div class="project">
+  <p>项目名：{{project.name}}</p>
+    <ul>
+      <li ng-repeat="spider in project.spiders">
+      <a ng-click="func.schedule(project.name, spider)" href="javascript:void(0);" class="button tiny" style="margin:0 4px 0 0;padding:4px 6px">启动</a>{{spider}}
+      </li>
+    </ul>
+  <p>状态：</p>
+    <ul ng-repeat="action in config.actions">
+    {{ action.text }}
+      <table>
+        <thead>
+            <th width="10">spider</th>
+            <th width="30">id</th>
+            <th width="30">start</th>
+            <th width="30">end</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="list in config.status[project.name][action.name]">
+            <td>{{list.spider}}</td>
+            <td>{{list.id}}</td>
+            <td>{{list.start_time}}</td>
+            <td>{{list.end_time}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </ul>
+  </div>
   </li>
 </ul>

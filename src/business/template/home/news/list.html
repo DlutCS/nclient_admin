@@ -4,7 +4,7 @@
       <dt>操作</dt>
       <dd class="active"><a href="javascript:void(0);" ng-click="func.deleteAll(event)">删除选中</a></dd>
       <dd class="active">
-        <select ng-model="config.category_id" style="margin:0;padding: 0 20px;height: 22px;" ng-change="func.retrievePage()">
+        <select ng-model="config.category_id" style="margin:0;padding: 0 20px;height: 22px;" ng-change="func.retrievePage(1)">
           <option ng-repeat="category in config.categories" value="{{category.id}}">{{category.name}}</option>
         </select>
       </dd>
