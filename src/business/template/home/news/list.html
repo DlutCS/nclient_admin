@@ -2,11 +2,18 @@
   <div class="operation">
     <dl class="sub-nav">
       <dt>操作</dt>
-      <dd class="active"><a href="javascript:void(0);" ui-sref="home.news.create">创建</a></dd>
       <dd class="active"><a href="javascript:void(0);" ng-click="func.deleteAll(event)">删除选中</a></dd>
+      <dd class="active">
+        <select ng-model="config.category_id" style="margin:0;padding: 0 20px;height: 22px;" ng-change="func.retrievePage()">
+          <option ng-repeat="category in config.categories" value="{{category.id}}">{{category.name}}</option>
+        </select>
+      </dd>
     </dl>
   </div>
   <div class="data-table">
+  <div ng-if="!config.loaded">
+    加载中，请稍候
+  </div>
   <table>
     <thead>
       <tr>
@@ -32,9 +39,7 @@
 
     </tbody>
   </table>
-  <div ng-if="!config.loaded">
-    加载中，请稍候
-  </div>
+
   <admin-pagination loaded="config.loaded" page-cnt="config.pageCnt" page-total="config.pageTotal" retrieve-func="func.retrievePage"></admin-pagination>
 
   </div>
