@@ -5,8 +5,8 @@ import 'angular'
 
 module.exports = function(app) {
   //CRUD Provider
-  app.factory('dataProvider', [ '$q', '$http',
-    function($q, $http) {
+  app.factory('dataProvider', [ '$q', '$http', '$window',
+    function($q, $http, $window) {
 
       var cache = {
 
@@ -16,6 +16,13 @@ module.exports = function(app) {
         var data = cache[model] || ( cache[model] = {} );
         var baseUrl = _option.baseUrl.replace(/\/$/,'')+'/' + model + '/';
 
+        function errorHandler(status) {
+            $window.alert(status.msg)
+            var code = parseInt(status.code)
+            if ( code > 1000 )
+              $window.location.href='/logout/'
+        }
+
         function createMethod(data) {
           return $http({
             method: 'post',
@@ -24,6 +31,7 @@ module.exports = function(app) {
             headers:{'Content-Type': 'application/x-www-form-urlencoded'}
            
           })
+          .error(errorHandler)
         }
         
         function retrieveMethod(data) {
@@ -32,6 +40,7 @@ module.exports = function(app) {
             url:  baseUrl + 'retrieve/',
             params: data
           })
+          .error(errorHandler)
         }
       
         function updateMethod(data) {
@@ -43,6 +52,7 @@ module.exports = function(app) {
             headers:{'Content-Type': 'application/x-www-form-urlencoded'}
            
           })
+          .error(errorHandler)
         }
 
         function deleteMethod(data) {
@@ -54,6 +64,7 @@ module.exports = function(app) {
             headers:{'Content-Type': 'application/x-www-form-urlencoded'}
            
           })
+          .error(errorHandler)
         }
 
         function dataEncode(data) {

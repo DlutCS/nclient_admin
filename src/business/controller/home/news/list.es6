@@ -15,20 +15,33 @@ module.exports = function (app) {
               loaded: false,
               pageCnt: $state.params.pageCnt || 1,
               pageLimit: 20,
-              pageTotal: 1
+              pageTotal: 1,
+              category_id: 1,
+              categories: []
             }
-            var model = dataProvider({
+            var modelNewslist = dataProvider({
               model: 'news',
               baseUrl: '/api/admin/'
             });
+            var modelCategory = dataProvider({
+              model: 'category',
+              baseUrl: '/api/admin/'
+            });
+            modelCategory.retrieve({})
+            .then(function(status) {
+              var data = status.data;
+              var cfg = $scope.config
+              cfg.categories = data.data
+              console.log(data)
+            })
 
             //model.retrieve({id: 1})
             $scope.$emit('homeListModalHide');
             
 
-            model['delete']({
-              id: [1,2,3]
-            })
+            // model['delete']({
+            //   id: [1,2,3]
+            // })
             
             $scope.func = {
               deleteAll: function (event) {
@@ -45,12 +58,14 @@ module.exports = function (app) {
                 console.log($event)
               },
               retrievePage: function(pageCnt) {
+                pageCnt = pageCnt || $scope.config.pageCnt
                 console.log('retrieve')
                 if (pageCnt < 1 || pageCnt > $scope.config.pageTotal ) return;
                 $scope.config.loaded = false;
-                model.retrieve({
+                modelNewslist.retrieve({
                   start: (pageCnt - 1)* $scope.config.pageLimit, 
-                  limit: $scope.config.pageLimit
+                  limit: $scope.config.pageLimit,
+                  cid: $scope.config.category_id
                 })
                 .success(function(data) {
                   $scope.config.pageCnt = pageCnt;

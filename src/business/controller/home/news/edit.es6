@@ -52,9 +52,9 @@ module.exports = function (app) {
                 if (mode !='create') {
                   modelNews.update(cfg.data)
                   .then(
-                    afterAjax('更新成功')
+                    afterAjax('更新', true)
                   , 
-                    afterAjax('更新错误')
+                    afterAjax('更新', false)
                   )
                 }
                 else {
@@ -62,17 +62,19 @@ module.exports = function (app) {
                   //check input
                   modelNews.create(cfg.data)
                   .then(
-                    afterAjax('新建成功')
+                    afterAjax('新建', true)
                   , 
-                    afterAjax('新建错误')
+                    afterAjax('新建', false)
                   )
                 }
 
-                function afterAjax(msg) {
-                  return function(){
-                    console.log(msg)
+                function afterAjax(msg, reslut) {
+                  return function(status){
+                    console.log(status)
                     cfg.editor.setEnabled()
                     cfg.loaded = true;
+                    $window.alert(msg+(reslut?'成功':'失败'))
+                    reslut && $state.go('home.news.list')
                   }
                 }
               }
