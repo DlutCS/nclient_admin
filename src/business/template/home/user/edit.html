@@ -1,1 +1,62 @@
-这是{{ workMode }}页面
+<div style="background-color:#FFF;width:100%;border: 1px solid #CCC;min-height:100%;">
+
+{{config.mode =='edit' ? '编辑页面' : '创建页面'}}
+{{config.loaded ? '加载完成':'加载中请稍候'}}
+<form class="small-6 small-offset-1 medium-6 medium-offset-1">
+  <div class="row">
+    <div class="columns">
+      <label>用户名
+        <input type="text" ng-model="config.data.username" placeholder="{{config.loaded?'请输入用户名':'Loading...'}}" ng-disabled="!config.loaded"/>
+      </label>
+    </div>
+    <!--
+    <div class="small-1 columns">
+      <label for="title" class="right">标题</label>
+    </div>
+    <div class="small-11 columns">
+      <input name="title" type="text" placeholder="请输入标题" ng-model="config.data.title"/>
+    </div>
+
+    -->
+  </div>
+  <div class="row">
+    <div class="small-6 columns">
+      <label>作者
+        <input type="text" ng-model="config.data.author" placeholder="{{config.loaded?'请输入作者':'Loading...'}}" ng-disabled="!config.loaded"/>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-6 columns">
+      <label>栏目
+        <select ng-model="config.data.category_id" ng-disabled="!config.loaded">
+
+          <option ng-repeat="cate in config.category" value="{{cate.id}}" ng-selected="{{ cate.id == config.data.category_id }}">{{cate.name}}</option>
+        </select>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-7 columns">
+      <label>封面图
+        <input type="text" ng-model="config.data.cover_url" placeholder="{{config.loaded?'请输入地址':'Loading...'}}" ng-disabled="!config.loaded"/>
+      </label>
+    </div>
+    <div class="small-5 columns">
+      <div style="width: 100%;height: 150px;background-color:#CCC; background-size: cover" ng-style="{'background-image': 'url('+ config.data.cover_url +')'}">
+        
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <label>文章内容
+        <textarea id="editor" placeholder="请键入文章内容" ng-model="config.data.content" rows="10"></textarea>
+      </label>
+    </div>
+  </div>
+  <a href="javascript:void(0);" ng-click="func.submitForm($event)" class="button small">submit</a>
+</form>
+
+</div>
+

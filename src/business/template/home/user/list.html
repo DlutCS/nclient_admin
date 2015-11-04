@@ -1,1 +1,42 @@
-这是列表页面
+<div class="list-page">
+  <div class="operation">
+    <dl class="sub-nav">
+      <dt>操作</dt>
+      <dd class="active"><a href="javascript:void(0);" ng-click="func.deleteAll(event)">删除选中</a></dd>
+
+    </dl>
+  </div>
+  <div class="data-table">
+  <div ng-if="!config.loaded">
+    加载中，请稍候
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th width="5">X</th>
+        <th width="5">ID</th>
+        <th>登录名</th>
+        <th width="150">昵称</th>
+        <th width="150">创建日期</th>
+        <th width="150">生日</th>
+        <th width="100">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="data-item" ng-repeat="r in config.records">
+        <td><input type="checkbox" name="select[]" ng-model="r.select"/></td>
+        <td>{{r.id}}</td>
+        <td>{{r.username}}</td>
+        <td>{{r.nickname}}</td>
+        <td>{{r.register_time}}</td>
+        <td>{{r.birthday}}</td>
+        <td><a ui-sref=".edit({id: r.id})">修改</a><a ng-click="func.deleteOne(r.id)">删除</a></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <admin-pagination loaded="config.loaded" page-cnt="config.pageCnt" page-total="config.pageTotal" retrieve-func="func.retrievePage"></admin-pagination>
+
+  </div>
+</div>

@@ -8,7 +8,8 @@ module.exports = function (app) {
  
     app.controller('newsListCtrl', ['$rootScope', '$scope', '$window', '$document', '$timeout', '$state', '$q', 'dataProvider',
         function ($rootScope, $scope, $window, $document, $timeout, $state, $q, dataProvider) {
-            console.log('news List 控制器', $state.params);
+            console.log('news List 控制器', $state.params,$state);
+
             $scope.config = {
               records: [],
               total: null,
